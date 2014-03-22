@@ -19,8 +19,8 @@ private static class LoadPictureCallable implements Callable<Bitmap> {
 Then you want to execute task use this
 
 ```java
-  LoadPictureCallable loadPictureCallable = new LoadPictureCallable();
-  Tasks.execute(loadPictureCallable, loadPictureCallback);
+LoadPictureCallable loadPictureCallable = new LoadPictureCallable();
+Tasks.execute(loadPictureCallable, loadPictureCallback);
 ```
 
 You will get results in your callback object (in the main thread):
