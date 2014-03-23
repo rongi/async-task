@@ -6,27 +6,27 @@ It is a lightweight and easy to use replacement for standard Android async tasks
 Basic usage
 ===========
 
-Create a subclass of `Callable`:
+This is how task execution looks in your code:
 
 ```java
-private static class LoadPictureCallable implements Callable<Bitmap> {
+MyCallable callable = new MyCallable();
+Tasks.execute(callable, taskCallback);
+```
+
+Implement you background task in a Callable:
+
+```java
+private static class MyCallable implements Callable<Bitmap> {
 	public Bitmap call() throws Exception {
 		// Do you networking here
 	}
 }
 ```
 
-Then you want to execute task use this
-
-```java
-LoadPictureCallable loadPictureCallable = new LoadPictureCallable();
-Tasks.execute(loadPictureCallable, loadPictureCallback);
-```
-
 You will get results in your callback object (in the main thread):
 
 ```java
-private final Callback<Bitmap> loadPictureCallback = new Callback<Bitmap>() {
+private final Callback<Bitmap> taskCallback = new Callback<Bitmap>() {
 	public void onFinish(Bitmap bitmap, Callable callable, Throwable t) {
 		if(exception == null) {
 			myImageView.setImageBitmap(bitmap);
