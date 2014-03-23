@@ -13,7 +13,7 @@ MyCallable callable = new MyCallable();
 Tasks.execute(callable, taskCallback);
 ```
 
-Implement you background task in a Callable:
+Implement you background task as a Callable:
 
 ```java
 private static class MyCallable implements Callable<Bitmap> {
