@@ -36,3 +36,9 @@ private final Callback<Bitmap> taskCallback = new Callback<Bitmap>() {
 	}
 };
 ```
+
+Features
+========
+
+1. Good design. Task code and result handlers are separated. So you can reuse task code anywhere with any handler or just as part of another task.
+2. Callabcks are weakly referenced so stalled task will not leak your activity.
