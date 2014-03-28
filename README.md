@@ -13,7 +13,7 @@ MyCallable callable = new MyCallable();
 Tasks.execute(callable, taskCallback);
 ```
 
-Implement you background task as a Callable:
+Implement you background task as a `Callable`:
 
 ```java
 private static class MyCallable implements Callable<Bitmap> {
@@ -41,4 +41,7 @@ Features
 ========
 
 1. Good design. Task code and result handlers are separated. So you can reuse task code anywhere with any handler or just as part of another task.
-2. Callabcks are weakly referenced so stalled task will not leak your activity.
+2. Callabcks are weakly referenced so stalled task will not leak your activity. 
+3. Callbacks can be forced to be strong referenced via options.
+4. You can "abandon" task. Abandoned tasks do not call it's callback when done. Do it by storing `Handle` returned from `Tasks.execute(callable, taskCallback)` and then call `myHandle.abandon()`
+5. It is possible to run tasks with you own `ThreadPoolExecutor` just specify one in `Options`
