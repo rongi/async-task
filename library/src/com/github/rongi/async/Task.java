@@ -18,6 +18,8 @@ class Task<T> implements Runnable {
 
 	public void abandon() {
 		this.abandoned = true;
+		callbackStrongReference = null;
+		callbackWeakReference = null;
 	}
 
 	@Override
