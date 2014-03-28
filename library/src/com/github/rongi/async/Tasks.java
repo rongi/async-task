@@ -6,19 +6,28 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class Tasks {
-
-	public static <T> Handle execute(Callable<T> callable, Callback callback) {
-		final Task<T> task = new Task<T>(callable, callback);
-		final Handle handle = new Handle(task);
-		executor = getThreadPoolExecutor();
-		executor.submit(task);
-		return handle;
+	
+	public static class Options {
+		public boolean strongReferencedCallback;
+		public ThreadPoolExecutor threadPoolExecutor;
 	}
 
-	public static <T> Handle execute(Callable<T> callable, Callback callback, ThreadPoolExecutor threadPoolExecutor) {
-		final Task<T> task = new Task<T>(callable, callback);
+	public static <T> Handle execute(Callable<T> callable, Callback callback) {
+		return execute(callable, callback, null);
+	}
+
+	public static <T> Handle execute(Callable<T> callable, Callback callback, Options options) {
+		if(options == null) {
+			if(defaultOptions == null) {
+				defaultOptions = new Options();
+			}
+			options = defaultOptions;
+		}
+		
+		final Task<T> task = new Task<T>(callable, callback, options.strongReferencedCallback);
 		final Handle handle = new Handle(task);
-		threadPoolExecutor.submit(task);
+		final ThreadPoolExecutor executor = options.threadPoolExecutor != null ? options.threadPoolExecutor : getThreadPoolExecutor();
+		executor.submit(task);
 		return handle;
 	}
 
@@ -33,5 +42,6 @@ public class Tasks {
 	}
 
 	private static ThreadPoolExecutor executor;
+	private static Options defaultOptions;
 
 }

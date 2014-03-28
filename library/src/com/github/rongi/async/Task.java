@@ -7,12 +7,12 @@ import java.util.concurrent.Callable;
 
 class Task<T> implements Runnable {
 
-	public Task(Callable<T> callable, Callback callback) {
+	public Task(Callable<T> callable, Callback callback, boolean callbackStrongReferenced) {
 		this.callable = callable;
-		if(callback != null) {
-			this.callbackReference = new WeakReference<Callback>(callback);
-		} else {
-			this.callbackReference = null;
+		if(callbackStrongReferenced) {
+			callbackStrongReference = callback;
+		} else if(callback != null && !callbackStrongReferenced) {
+			this.callbackWeakReference = new WeakReference<Callback>(callback);
 		}
 	}
 
@@ -39,21 +39,31 @@ class Task<T> implements Runnable {
 	public Callable<T> getCallable() {
 		return callable;
 	}
+	
+	private Callback getCallback() {
+		if(callbackStrongReference != null) {
+			return callbackStrongReference;
+		} else if(callbackWeakReference != null) {
+			return callbackWeakReference.get();
+		} else {
+			return null;
+		}
+	}
 
 	private final Handler handler = new Handler() {
 		@SuppressWarnings("unchecked")
 		public void handleMessage(android.os.Message msg) {
-			if(callbackReference != null && !abandoned) {
-				final com.github.rongi.async.Callback callback = callbackReference.get();
-				if(callback != null) {
-					callback.onFinish(result, callable, exception);
-				}
+			final com.github.rongi.async.Callback callback = getCallback();
+			if(callback != null && !abandoned) {
+				callback.onFinish(result, callable, exception);
 			}
 		}
 	};
 
 	private final Callable<T> callable;
-	private final WeakReference<Callback> callbackReference;
+	
+	private WeakReference<Callback> callbackWeakReference;
+	private Callback callbackStrongReference;
 
 	private boolean abandoned;
 
