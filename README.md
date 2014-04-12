@@ -28,7 +28,7 @@ You will get results in your callback object (in the main thread):
 ```java
 private final Callback<Bitmap> taskCallback = new Callback<Bitmap>() {
 	public void onFinish(Bitmap bitmap, Callable callable, Throwable t) {
-		if(exception == null) {
+		if(t == null) {
 			myImageView.setImageBitmap(bitmap);
 		} else {
 			t.printStackTrace();
