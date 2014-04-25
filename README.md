@@ -18,7 +18,7 @@ Implement you background task as a `Callable`:
 ```java
 private static class MyCallable implements Callable<Bitmap> {
 	public Bitmap call() throws Exception {
-		// Do you networking here
+		// Do you networking (i.e.) here
 	}
 }
 ```
