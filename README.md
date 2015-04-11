@@ -16,8 +16,8 @@ Tasks.execute(callable, taskCallback);
 Implement you background task as a `Callable`:
 
 ```java
-private static class MyCallable implements Callable<Bitmap> {
-	public Bitmap call() throws Exception {
+private static class MyCallable implements Callable<String> {
+	public String call() throws Exception {
 		// Do you networking (i.e.) here
 	}
 }
@@ -26,10 +26,10 @@ private static class MyCallable implements Callable<Bitmap> {
 You will get results in your callback object (in the main thread):
 
 ```java
-private final Callback<Bitmap> taskCallback = new Callback<Bitmap>() {
-	public void onFinish(Bitmap bitmap, Callable callable, Throwable t) {
+private final Callback<String> taskCallback = new Callback<String>() {
+	public void onFinish(String result, Callable callable, Throwable t) {
 		if(t == null) {
-			myImageView.setImageBitmap(bitmap);
+			// do something with the String
 		} else {
 			t.printStackTrace();
 		}
