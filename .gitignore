@@ -29,3 +29,10 @@ proguard/
 .idea/
 
 .DS_Store
+async-task/project.properties
+gradlew
+gradlew.bat
+.gradle
+build
+gradle
+out
