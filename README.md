@@ -27,8 +27,8 @@ You will get results in your callback object (in the main thread):
 
 ```java
 private final Callback<String> taskCallback = new Callback<String>() {
-	public void onFinish(String result, Callable callable, Throwable t) {
-		if (t == null) {
+	public void onFinish(String result, Callable callable, Throwable e) {
+		if (e == null) {
 			// do something with the String
 		} else {
 			t.printStackTrace();
