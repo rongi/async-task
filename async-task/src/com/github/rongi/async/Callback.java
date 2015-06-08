@@ -4,6 +4,6 @@ import java.util.concurrent.Callable;
 
 public interface Callback<T> {
 
-	public void onFinish(T result, Callable callable, Throwable throwable);
+	public void onFinish(T result, Callable callable, Throwable e);
 
 }

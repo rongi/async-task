@@ -4,16 +4,16 @@ version = "1.0.0"
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'rotate-layout'
+    bintrayName = 'async-task'
 
-    publishedGroupId = 'rongi.rotate-layout'
-    libraryName = 'rotate-layout'
-    artifact = 'rotate-layout'
+    publishedGroupId = 'rongi.async-task'
+    libraryName = 'async-task'
+    artifact = 'async-task'
 
-    libraryDescription = 'Custom layout that can rotate it\'s view'
+    libraryDescription = 'Android async task replacement. Simple and easy to use'
 
-    siteUrl = 'https://github.com/rongi/rotate-layout'
-    gitUrl = 'https://github.com/rongi/rotate-layout.git'
+    siteUrl = 'https://github.com/rongi/async-task'
+    gitUrl = 'https://github.com/rongi/async-task.git'
 
     libraryVersion = version
 
@@ -22,7 +22,7 @@ ext {
     developerEmail = 'rongi@users.noreply.github.com'
 
     licenseName = 'The MIT License (MIT)'
-    licenseUrl = 'https://github.com/rongi/rotate-layout/blob/master/LICENSE.md'
+    licenseUrl = 'https://github.com/rongi/async-task/blob/master/LICENSE.md'
     allLicenses = ["MIT"]
 }
 
