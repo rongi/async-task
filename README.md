@@ -45,3 +45,14 @@ Features
 3. Callbacks can be forced to be strong referenced via options.
 4. You can "abandon" task. Abandoned tasks do not call it's callback when done. Do it by storing `Handle` returned from `Tasks.execute(callable, taskCallback)` and then call `myHandle.abandon()`
 5. It is possible to run tasks with you own `ThreadPoolExecutor` just specify one in `Options`
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'rongi.async-task:async-task:1.0.0'
+}
+
+ 
+
