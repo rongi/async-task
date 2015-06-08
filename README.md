@@ -1,7 +1,7 @@
 async-task for Android
 ===========================
 
-It is a lightweight and easy to use replacement for standard Android async tasks.
+It is a lightweight and easy to use replacement for standard Android async tasks. And more simple and straitforward than RxJava.
 
 Basic usage
 ===========
