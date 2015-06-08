@@ -31,7 +31,7 @@ private final Callback<String> taskCallback = new Callback<String>() {
 		if (e == null) {
 			// do something with the String
 		} else {
-			t.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 };
