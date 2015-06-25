@@ -46,7 +46,7 @@ repositories {
 }
 
 dependencies {
-    compile 'rongi.async-task:async-task:1.0.0'
+    compile 'rongi.async-task:async-task:1.0.1'
 }
 ```
 
