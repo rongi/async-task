@@ -12,10 +12,20 @@ public class Tasks {
 		public ThreadPoolExecutor threadPoolExecutor;
 	}
 
+	/**
+	 * Runs this callable on background thread. If it returns result or throws exception,
+	 * you will get this in callback on main thread.
+	 * @return with Handle you can manage running task, abandon it for example
+	 */
 	public static <T> Handle execute(Callable<T> callable, Callback callback) {
 		return execute(callable, callback, null);
 	}
 
+	/**
+	 * Runs this callable on background thread. If it returns result or throws exception,
+	 * you will get this in callback on main thread.
+	 * @return with Handle you can manage running task, abandon it for example
+	 */
 	public static <T> Handle execute(Callable<T> callable, Callback callback, Options options) {
 		if(options == null) {
 			if(defaultOptions == null) {
@@ -24,7 +34,7 @@ public class Tasks {
 			options = defaultOptions;
 		}
 		
-		final Task<T> task = new Task<T>(callable, callback, options.strongReferencedCallback);
+		final Task<T> task = new Task<>(callable, callback, options.strongReferencedCallback);
 		final Handle handle = new Handle(task);
 		final ThreadPoolExecutor executor = options.threadPoolExecutor != null ? options.threadPoolExecutor : getThreadPoolExecutor();
 		executor.submit(task);
