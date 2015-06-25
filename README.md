@@ -29,7 +29,7 @@ You will get results in your callback object (in the main thread):
 private final Callback<String> taskCallback = new Callback<String>() {
 	public void onFinish(String result, Callable callable, Throwable e) {
 		if (e == null) {
-			// do something with the String
+			// do something with the result
 		} else {
 			e.printStackTrace();
 		}
