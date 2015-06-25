@@ -55,7 +55,7 @@ Features
 
 1. Task code and result handlers are separated. In AsyncTask they are not, and this is madmans design, right?
 2. Callbacks are weakly referenced so stalled task will not leak your activity.
-3. This also means that you don't need to unsubscribe from task on activity onStop().
+3. This also means that you don't need to unsubscribe from task in onStop().
 4. Callbacks can be forced to be strong referenced via options.
 5. You can "abandon" task. Abandoned tasks do not call it's callback when done. Do it by storing `Handle` returned from `Tasks.execute(callable, taskCallback)` and then call `myHandle.abandon()`
 6. It is possible to run tasks with you own `ThreadPoolExecutor` just specify one in `Options`
