@@ -9,8 +9,8 @@ Basic usage
 This is how task execution looks in your code:
 
 ```java
-MyCallable callable = new MyCallable();
-Tasks.execute(callable, taskCallback);
+Task task = new Task();
+Tasks.execute(task, taskCallback);
 ```
 
 Implement you background task as a `Callable`:
@@ -28,10 +28,11 @@ You will get results in your callback object (in the main thread):
 ```java
 private final Callback<String> taskCallback = new Callback<String>() {
 	public void onFinish(String result, Callable callable, Throwable e) {
+		// Here you'll get either throwable or result
 		if (e == null) {
 			// do something with the result
 		} else {
-			e.printStackTrace();
+			// handle error
 		}
 	}
 };
