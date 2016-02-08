@@ -10,7 +10,7 @@ This is how task execution looks in your code:
 
 ```java
 Task task = new Task();
-Tasks.execute(task, taskCallback);
+Tasks.execute(task, callback);
 ```
 
 Implement you background task as a `Callable`:
@@ -26,7 +26,7 @@ private static class MyCallable implements Callable<String> {
 You will get results in your callback object (in the main thread):
 
 ```java
-private final Callback<String> taskCallback = new Callback<String>() {
+private final Callback<String> callback = new Callback<String>() {
 	public void onFinish(String result, Callable callable, Throwable e) {
 		// Here you'll get either throwable or result
 		if (e == null) {
