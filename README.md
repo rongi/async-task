@@ -13,7 +13,7 @@ Task task = new Task();
 Tasks.execute(task, callback);
 ```
 
-Implement you background task as a `Callable`:
+Tasks are implemented as simple `Callable`s:
 
 ```java
 private static class MyCallable implements Callable<String> {
