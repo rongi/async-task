@@ -1,7 +1,7 @@
 async-task for Android
 ===========================
 
-This library does the same thing AsyncTask does – runs code on background thread and gets result back to the main thread. But it is simpler, cleaner, easier to understand, strait-forward to use, hides no arcane knowledge (like how exactly cancel() works in AsyncTask). And it is more simple and straitforward than RxJava.
+This library does the same thing AsyncTask does – runs code on background thread and gets result back to the main thread. But it is simpler, cleaner, easier to understand, straightforward to use, reqires no arcane knowledge to be used. And it requires less boilerplate code than RxJava.
 
 Basic usage
 ===========
