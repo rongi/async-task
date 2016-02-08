@@ -6,7 +6,7 @@ This library does the same thing AsyncTask does – runs code on background thre
 Basic usage
 ===========
 
-This is how task execution looks in your code:
+This is how task execution looks in the code:
 
 ```java
 Task task = new Task();
