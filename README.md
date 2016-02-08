@@ -13,7 +13,7 @@ Task task = new Task();
 Tasks.execute(task, callback);
 ```
 
-Tasks are implemented as simple `Callable`s:
+Tasks are implemented as simple `Callables`:
 
 ```java
 private static class MyCallable implements Callable<String> {
